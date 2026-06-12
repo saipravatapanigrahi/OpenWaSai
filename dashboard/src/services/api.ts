@@ -2,7 +2,7 @@
 // Centralized API client with TypeScript types
 
 const API_BASE_URL =
-  import.meta.env.VITE_API_URL || 'http://localhost:2785/api';
+  import.meta.env.VITE_API_URL/api || 'http://localhost:2785/api';
 // =============================================================================
 // Types
 // =============================================================================
