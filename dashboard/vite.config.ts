@@ -13,7 +13,7 @@ export default defineConfig({
     port: 2886,
     proxy: {
       '/api': {
-       target: 'https://openwasai-1.onrender.com',
+       target: 'http://localhost:2886',
         changeOrigin: true,
         secure: false,
       },
