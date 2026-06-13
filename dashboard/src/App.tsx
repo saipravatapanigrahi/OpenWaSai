@@ -41,7 +41,7 @@ function AppContent() {
 
     // Fetch the role from API
     try {
-      const response = await fetch('/api/auth/validate', {
+      const response = await fetch('https://openwasai-1.onrender.com/api/auth/validate', {
         method: 'POST',
         headers: { 'X-API-Key': key },
       });
@@ -67,8 +67,8 @@ function AppContent() {
   // Re-validate and get role on mount if already authenticated
   useEffect(() => {
     if (!savedKey) return;
-
-    fetch('/api/auth/validate', {
+//Here i added these if you want to use in local remove these https://openwasai-1.onrender.com
+    fetch('https://openwasai-1.onrender.com/api/auth/validate', {
       method: 'POST',
       headers: { 'X-API-Key': savedKey },
     })
