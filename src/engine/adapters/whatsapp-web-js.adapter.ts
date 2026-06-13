@@ -88,16 +88,27 @@ export class WhatsAppWebJsAdapter extends EventEmitter implements IWhatsAppEngin
         );
       }
 
+      // this.client = new Client({
+      //   authStrategy: new LocalAuth({
+      //     clientId: this.config.sessionId,
+      //     dataPath: path.resolve(this.config.sessionDataPath),
+      //   }),
+      //   puppeteer: {
+      //     headless: this.config.puppeteer?.headless ?? true,
+      //     args: puppeteerArgs,
+      //   },
+      // });
       this.client = new Client({
-        authStrategy: new LocalAuth({
-          clientId: this.config.sessionId,
-          dataPath: path.resolve(this.config.sessionDataPath),
-        }),
-        puppeteer: {
-          headless: this.config.puppeteer?.headless ?? true,
-          args: puppeteerArgs,
-        },
-      });
+  authStrategy: new LocalAuth({
+    clientId: this.config.sessionId,
+    dataPath: path.resolve(this.config.sessionDataPath),
+  }),
+  puppeteer: {
+    headless: this.config.puppeteer?.headless ?? true,
+    args: puppeteerArgs,
+    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/chromium',
+  },
+});
 
       this.setupEventHandlers();
       await this.client.initialize();
