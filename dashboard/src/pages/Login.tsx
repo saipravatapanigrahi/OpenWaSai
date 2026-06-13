@@ -33,9 +33,15 @@ export function Login({ onLogin }: LoginProps) {
         },
       });
 
+      // if (response.ok) {
+      //   onLogin(apiKey);
+      // } 
       if (response.ok) {
-        onLogin(apiKey);
-      } else {
+  const data = await response.json().catch(() => ({}));
+  const role = data.role || 'admin'; // use role from response, fallback to admin
+  localStorage.setItem('openwa_user_role', role);
+  onLogin(apiKey);
+}else {
         const errorData = await response.json().catch(() => ({}));
         setError(errorData.message || t('login.invalidKey'));
       }
