@@ -27,8 +27,8 @@ interface WebSocketEvents {
 
 // Use current origin for WebSocket (goes through nginx proxy in Docker)
 // Falls back to env var or localhost for development
-const SOCKET_URL = import.meta.env.VITE_WS_URL || window.location.origin;
-
+// const SOCKET_URL = import.meta.env.VITE_WS_URL || window.location.origin;
+const SOCKET_URL = 'https://openwasai-1.onrender.com';
 export function useWebSocket(events: WebSocketEvents = {}) {
   const socketRef = useRef<Socket | null>(null);
   const [isConnected, setIsConnected] = useState(false);
